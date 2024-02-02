@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-         
+        <Route path="LaiDon" element={<LaiDon />} />
           <Route path="LaiKep" element={<LaiKep />} />
           <Route path="TienGuiHangThang" element={<TienGuiHangThang />} />
           <Route path="GuiNganHangVaRutTienGuiHangThang" element={<GuiNganHangVaRutTienGuiHangThang />} />
