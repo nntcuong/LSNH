@@ -53,8 +53,9 @@ const LaiKepLienTuc = (props) => {
     const totalCapitalAndInterestValue3 = parseInt(totalCapitalAndInterest3)/100;
 
     if (!isNaN(initialCapitalValue3) && !isNaN(interestRateValue3) && !isNaN(totalCapitalAndInterestValue3)) {
-      const periods = (1/totalCapitalAndInterestValue3)*(Math)
-      setNumberOfPeriods3(periods);
+      const periods = (1/totalCapitalAndInterestValue3)*(Math.log(initialCapitalValue3/interestRateValue3)/Math.log(2.71828))
+      const rounded_n=Math.round(periods);
+      setNumberOfPeriods3(rounded_n);
     } else {
       setNumberOfPeriods3(null);
     }
@@ -126,7 +127,7 @@ const LaiKepLienTuc = (props) => {
           </div>
           <div className="result">
           <div className="resultRow">
-          <p>Số kỳ hạn là : </p>
+          <p>Số tiền cả vốn và lãi là : </p>
             {numberOfPeriods !== null && (
               <p className="resultNumber">  {numberOfPeriods.toFixed(2)}</p>
             )}
@@ -161,7 +162,7 @@ const LaiKepLienTuc = (props) => {
           </div>
           <div className="result">
           <div className="resultRow">
-          <p>Tổng vốn và lãi là : </p>
+          <p>Số tiền gửi ngân hàng là : </p>
             {numberOfPeriods2 !== null && (
               <p className="resultNumber">  {numberOfPeriods2.toFixed(2)}</p>
             )}
@@ -195,7 +196,41 @@ const LaiKepLienTuc = (props) => {
           </div>
           <div className="result">
           <div className="resultRow">
-          <p>Tính số tiền vốn : </p>
+          <p>Số kỳ hạn là : </p>
+            {numberOfPeriods3 !== null && (
+              <p className="resultNumber">  {numberOfPeriods3.toFixed(2)}</p>
+            )}
+            </div>
+           <button onClick={calculateNumberOfPeriods3}>Tính</button>
+          </div>
+        </div>
+
+        <div className="recentOrders">
+          <div className="cardHeader">
+            <h2>III. Tính lãi suất</h2>
+            <a href="#" className="btn" onClick={clearInputs3}>
+              Clear
+            </a>
+          </div>
+
+          <div>
+            <div className="rowInput">
+              <p>Nhập số tiền cả vốn và lãi</p>
+              <input type="number" value={initialCapital3} onChange={(e) => setInitialCapital3(e.target.value)} />
+            </div>
+            <div className="rowInput">
+              <p>Nhập số tiền gửi ngân hàng</p>
+              <input type="number" value={interestRate3} onChange={(e) => setInterestRate3(e.target.value)} />
+            </div>
+            <div className="rowInput">
+              <p>Nhập số kỳ hạn</p>
+              <input type="number" value={totalCapitalAndInterest3} onChange={(e) => setTotalCapitalAndInterest3(e.target.value)} />
+            </div>
+
+          </div>
+          <div className="result">
+          <div className="resultRow">
+          <p>Số kỳ hạn là : </p>
             {numberOfPeriods3 !== null && (
               <p className="resultNumber">  {numberOfPeriods3.toFixed(2)}</p>
             )}
