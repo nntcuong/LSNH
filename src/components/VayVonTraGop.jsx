@@ -80,7 +80,7 @@ const VayVonTraGop = (props) => {
       <div className="details">
         <div className="recentOrders">
           <div className="cardHeader">
-            <h2>I. Tính số tiền trả góp/tháng </h2>
+            <h2>I. Tính số tiền cả vốn và lãi </h2>
             <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>

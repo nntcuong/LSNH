@@ -52,10 +52,7 @@ const LaiDon = (props) => {
     const totalCapitalAndInterestValue3 = parseInt(totalCapitalAndInterest3);
 
     if (!isNaN(initialCapitalValue3) && !isNaN(interestRateValue3) && !isNaN(totalCapitalAndInterestValue3)) {
-      let periods = 0;
-      for (let i = 1; i <= totalCapitalAndInterestValue3; i++) {
-        periods =periods+ initialCapitalValue3 * (1 + ((interestRateValue3*i)/100));
-      }
+      const periods = (initialCapitalValue3-interestRateValue3)/(interestRateValue3*totalCapitalAndInterestValue3)
       setNumberOfPeriods3(periods);
     } else {
       setNumberOfPeriods3(null);
@@ -264,7 +261,7 @@ const LaiDon = (props) => {
           </div>
           <div className="result">
           <div className="resultRow">
-          <p>Tổng tiền từng kỳ hạn là : </p>
+          <p>Lãi suất là : </p>
             {numberOfPeriods3 !== null && (
               <p className="resultNumber">  {numberOfPeriods3.toFixed(2)}</p>
             )}

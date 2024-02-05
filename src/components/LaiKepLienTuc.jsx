@@ -12,12 +12,12 @@ const LaiKepLienTuc = (props) => {
   const calculateNumberOfPeriods = () => {
     const initialCapitalValue = parseFloat(initialCapital);
     const interestRateValue = parseFloat(interestRate);
-    const totalCapitalAndInterestValue = parseFloat(totalCapitalAndInterest);
+    const totalCapitalAndInterestValue = parseFloat(totalCapitalAndInterest)/100;
 
     if (!isNaN(initialCapitalValue) && !isNaN(interestRateValue) && !isNaN(totalCapitalAndInterestValue)) {
-      const n = Math.log(initialCapitalValue / interestRateValue) / (totalCapitalAndInterestValue / 100);
-    const roundedN = Math.round(n);
-      setNumberOfPeriods(roundedN);
+      const n = initialCapitalValue*(Math.pow(2.71828,(interestRateValue*totalCapitalAndInterestValue)))
+    
+      setNumberOfPeriods(n);
     } else {
       setNumberOfPeriods(null);
     }
@@ -31,11 +31,11 @@ const LaiKepLienTuc = (props) => {
 
   const calculateNumberOfPeriods2 = () => {
     const initialCapitalValue2 = parseFloat(initialCapital2);
-    const interestRateValue2 = parseFloat(interestRate2);
+    const interestRateValue2 = parseFloat(interestRate2)/100;
     const totalCapitalAndInterestValue2 = parseFloat(totalCapitalAndInterest2);
 
     if (!isNaN(initialCapitalValue2) && !isNaN(interestRateValue2) && !isNaN(totalCapitalAndInterestValue2)) {
-      const periods = initialCapitalValue2 * Math.exp(totalCapitalAndInterestValue2 * (interestRateValue2 / 100));
+      const periods = initialCapitalValue2/(Math.pow(2.71828,interestRateValue2*totalCapitalAndInterestValue2))
       setNumberOfPeriods2(periods);
     } else {
       setNumberOfPeriods2(null);
@@ -50,10 +50,10 @@ const LaiKepLienTuc = (props) => {
   const calculateNumberOfPeriods3 = () => {
     const initialCapitalValue3 = parseFloat(initialCapital3);
     const interestRateValue3 = parseFloat(interestRate3);
-    const totalCapitalAndInterestValue3 = parseInt(totalCapitalAndInterest3);
+    const totalCapitalAndInterestValue3 = parseInt(totalCapitalAndInterest3)/100;
 
     if (!isNaN(initialCapitalValue3) && !isNaN(interestRateValue3) && !isNaN(totalCapitalAndInterestValue3)) {
-      const periods = initialCapitalValue3 / Math.exp(totalCapitalAndInterestValue3 * (interestRateValue3/100))
+      const periods = (1/totalCapitalAndInterestValue3)*(Math)
       setNumberOfPeriods3(periods);
     } else {
       setNumberOfPeriods3(null);
@@ -103,7 +103,7 @@ const LaiKepLienTuc = (props) => {
       <div className="details">
         <div className="recentOrders">
           <div className="cardHeader">
-            <h2>I. Tính kỳ hạn</h2>
+            <h2>I. Tính số tiền cả vốn và lãi</h2>
             <a href="#" className="btn" onClick={clearInputs}>
               Clear
             </a>
@@ -111,11 +111,11 @@ const LaiKepLienTuc = (props) => {
 
           <div>
             <div className="rowInput">
-              <p>Nhập số tiền gốc và lãi</p>
+              <p>Nhập số tiền gửi ngân hàng (A）</p>
               <input type="number" value={initialCapital} onChange={(e) => setInitialCapital(e.target.value)} />
             </div>
             <div className="rowInput">
-              <p>Nhập số tiền gửi vào</p>
+              <p>Nhập số kỳ hạn</p>
               <input type="number" value={interestRate} onChange={(e) => setInterestRate(e.target.value)} />
             </div>
             <div className="rowInput">
@@ -138,7 +138,7 @@ const LaiKepLienTuc = (props) => {
         {/* ================= New Customers ================ */}
         <div className="recentOrders">
           <div className="cardHeader">
-            <h2>II. Tính tổng</h2>
+            <h2>II. Tính số tiền gửi ngân hàng</h2>
             <a href="#" className="btn" onClick={clearInputs2}>
               Clear
             </a>
@@ -146,11 +146,11 @@ const LaiKepLienTuc = (props) => {
 
           <div>
             <div className="rowInput">
-              <p>Nhập số vốn ban đầu</p>
+              <p>Nhập số tiền cả vốn và lãi</p>
               <input type="number" value={initialCapital2} onChange={(e) => setInitialCapital2(e.target.value)} />
             </div>
             <div className="rowInput">
-              <p>Nhập số % lãi suất</p>
+              <p>Nhập lãi suất</p>
               <input type="number" value={interestRate2} onChange={(e) => setInterestRate2(e.target.value)} />
             </div>
             <div className="rowInput">
@@ -172,7 +172,7 @@ const LaiKepLienTuc = (props) => {
 
         <div className="recentOrders">
           <div className="cardHeader">
-            <h2>III. Tính gốc</h2>
+            <h2>III. Tính số kỳ hạn</h2>
             <a href="#" className="btn" onClick={clearInputs3}>
               Clear
             </a>
@@ -180,15 +180,15 @@ const LaiKepLienTuc = (props) => {
 
           <div>
             <div className="rowInput">
-              <p>Nhập số tiền nhận được</p>
+              <p>Nhập số tiền cả vốn và lãi</p>
               <input type="number" value={initialCapital3} onChange={(e) => setInitialCapital3(e.target.value)} />
             </div>
             <div className="rowInput">
-              <p>Nhập lãi suất</p>
+              <p>Nhập số tiền gửi ngân hàng</p>
               <input type="number" value={interestRate3} onChange={(e) => setInterestRate3(e.target.value)} />
             </div>
             <div className="rowInput">
-              <p>Nhập kỳ hạn</p>
+              <p>Nhập lãi suất</p>
               <input type="number" value={totalCapitalAndInterest3} onChange={(e) => setTotalCapitalAndInterest3(e.target.value)} />
             </div>
 
